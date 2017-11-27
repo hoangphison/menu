@@ -1,14 +1,9 @@
 # Html Menu Generator
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/menu.svg?style=flat-square)](https://packagist.org/packages/spatie/menu)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/spatie/menu/master.svg?style=flat-square)](https://travis-ci.org/spatie/menu)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/315e0520-ff38-4441-9b6a-ebb6efe3bcb2.svg?style=flat-square)](https://insight.sensiolabs.com/projects/315e0520-ff38-4441-9b6a-ebb6efe3bcb2)
-[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/menu.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/menu)
-[![StyleCI](https://styleci.io/repos/51363080/shield?branch=master)](https://styleci.io/repos/51363080)
-[![Total Downloads](https://img.shields.io/packagist/dt/spatie/menu.svg?style=flat-square)](https://packagist.org/packages/spatie/menu)
+[![Build Status](https://travis-ci.org/hoangphison/menu.svg?branch=feature%2Fphp5.6-compatibility)](https://travis-ci.org/hoangphison/menu)
+[![StyleCI](https://styleci.io/repos/111900223/shield?branch=master)](https://styleci.io/repos/111900223)
 
-The `spatie/menu` package provides a fluent interface to build menus of any size in your php application. If you're building your app with Laravel, the [`spatie/laravel-menu`](https://github.com/spatie/laravel-menu) provides some extra treats.
+The `hoangphison/menu` package provides a fluent interface to build menus of any size in your php application. If you're building your app with Laravel, the [`hoangphison/laravel-menu`](https://github.com/hoangphison/laravel-menu) provides some extra treats.
 
 Documentation is available at https://docs.spatie.be/menu.
 
@@ -19,7 +14,7 @@ Upgrading from version 1? There's a [guide](https://github.com/spatie/menu#upgra
 All classes provide a human readable, fluent interface (no array configuration). Additionally, you can opt for a more verbose and flexible syntax, or for convenience methods that cover most use cases.
 
 ```php
-Menu::new()
+Menu::newMenu()
     ->add(Link::to('/', 'Home'))
     ->add(Link::to('/about', 'About'))
     ->add(Link::to('/contact', 'Contact'))
@@ -27,7 +22,7 @@ Menu::new()
     ->render();
 
 // Or just...
-Menu::new()
+Menu::newMenu()
     ->link('/', 'Home')
     ->link('/about', 'About')
     ->link('/contact', 'Contact')
@@ -72,7 +67,7 @@ Menu::build($pages, function ($menu, $label, $url) {
 You can programatically add html classes and attributes to any item in the menu, or to the menu itself.
 
 ```php
-Menu::new()
+Menu::newMenu()
     ->addClass('navigation')
     ->add(Link::to('/', 'Home')->addClass('home-link'))
     ->add(Link::to('/about', 'About'))
@@ -95,9 +90,9 @@ Menu::new()
 The menu supports submenus, which in turn can be nested infinitely.
 
 ```php
-Menu::new()
+Menu::newMenu()
     ->link('/', 'Home')
-    ->submenu('More', Menu::new()
+    ->submenu('More', Menu::newMenu()
         ->addClass('submenu')
         ->link('/about', 'About'))
         ->link('/contact', 'Contact'))
@@ -144,7 +139,7 @@ Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview 
 You can install the package via composer:
 
 ``` bash
-$ composer require spatie/menu
+$ composer require hoangphison/menu
 ```
 
 ## Usage
