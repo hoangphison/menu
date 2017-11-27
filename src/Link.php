@@ -32,7 +32,7 @@ class Link implements Item, HasHtmlAttributes, HasParentAttributes, Activatable
      * @param string $url
      * @param string $text
      */
-    protected function __construct(string $url, string $text)
+    protected function __construct($url, $text)
     {
         $this->url = $url;
         $this->text = $text;
@@ -46,7 +46,7 @@ class Link implements Item, HasHtmlAttributes, HasParentAttributes, Activatable
      *
      * @return static
      */
-    public static function to(string $url, string $text)
+    public static function to($url, $text)
     {
         return new static($url, $text);
     }
@@ -54,7 +54,7 @@ class Link implements Item, HasHtmlAttributes, HasParentAttributes, Activatable
     /**
      * @return string
      */
-    public function text(): string
+    public function text()
     {
         return $this->text;
     }
@@ -62,7 +62,7 @@ class Link implements Item, HasHtmlAttributes, HasParentAttributes, Activatable
     /**
      * @return string
      */
-    public function render(): string
+    public function render()
     {
         $attributes = new Attributes(['href' => $this->url]);
         $attributes->mergeWith($this->htmlAttributes);
@@ -73,7 +73,7 @@ class Link implements Item, HasHtmlAttributes, HasParentAttributes, Activatable
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->render();
     }

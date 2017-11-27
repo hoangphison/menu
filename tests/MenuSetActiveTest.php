@@ -10,7 +10,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_with_a_callable()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('/', 'Home')
             ->link('/about', 'About')
             ->setActive(function (Link $link) {
@@ -28,8 +28,8 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_recursively_through_submenus_with_a_callable()
     {
-        $this->menu = Menu::new()
-            ->add(Menu::new()
+        $this->menu = Menu::newMenu()
+            ->add(Menu::newMenu()
                 ->link('/', 'Home')
                 ->link('/about', 'About')
             )
@@ -52,7 +52,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_while_items_exists_with_startswith_true()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('http://example.com', 'Home')
             ->link('http://example.com/disclaimer', 'Disclaimer')
             ->link('http://example.com/disclaimer-full', 'Full Disclaimer')
@@ -74,7 +74,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_with_an_absolute_url()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('http://example.com', 'Home')
             ->link('http://example.com/disclaimer', 'Disclaimer')
             ->link('http://example.com/disclaimer/intellectual-property', 'Intellectual Property')
@@ -96,8 +96,8 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_recursively_through_submenus_from_an_absolute_url()
     {
-        $this->menu = Menu::new()
-            ->add(Menu::new()
+        $this->menu = Menu::newMenu()
+            ->add(Menu::newMenu()
                 ->link('http://example.com', 'Home')
                 ->link('http://example.com/disclaimer', 'Disclaimer')
                 ->link('http://example.com/disclaimer/intellectual-property', 'Intellectual Property')
@@ -124,7 +124,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_can_set_items_active_from_a_relative_url()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('/', 'Home')
             ->link('/disclaimer', 'Disclaimer')
             ->link('/disclaimer/intellectual-property', 'Intellectual Property')
@@ -146,7 +146,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_doesnt_set_items_active_if_the_paths_match_but_they_have_a_different_domain()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('https://example.com/foo', 'Example Foo')
             ->link('https://another-example.com/foo', 'Another Example Foo')
             ->setActive('https://example.com/foo');
@@ -162,7 +162,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_doesnt_set_items_active_if_the_paths_match_but_they_have_a_different_subdomain()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('https://example.com/foo', 'Example Foo')
             ->link('https://sub.example.com/foo', 'Sub Example Foo')
             ->setActive('https://example.com/foo');
@@ -178,7 +178,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function it_uses_a_request_root_to_ensure_top_level_links_arent_always_active()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('/nl', 'Home')
             ->link('/nl/disclaimer', 'Disclaimer')
             ->link('/nl/disclaimer/intellectuele-eigendom', 'Intellectuële Eigendom')
@@ -196,7 +196,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function the_request_root_also_works_when_not_prepended_by_a_slash()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('/nl', 'Home')
             ->link('/nl/disclaimer', 'Disclaimer')
             ->link('/nl/disclaimer/intellectuele-eigendom', 'Intellectuële Eigendom')
@@ -214,7 +214,7 @@ class MenuSetActiveTest extends MenuTestCase
     /** @test */
     public function and_we_can_still_set_the_root_as_active()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('/nl', 'Home')
             ->link('/nl/disclaimer', 'Disclaimer')
             ->link('/nl/disclaimer/intellectuele-eigendom', 'Intellectuële Eigendom')
@@ -231,7 +231,7 @@ class MenuSetActiveTest extends MenuTestCase
 
     public function it_can_render_a_custom_active_class()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->setActiveClass('-active')
             ->link('/', 'Home')
             ->link('/disclaimer', 'Disclaimer')

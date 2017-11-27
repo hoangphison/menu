@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    public function assertHtmlEquals(string $expected, string $actual, string $message = '')
+    public function assertHtmlEquals($expected, $actual, $message = '')
     {
         $this->assertEquals(
             $this->sanitizeHtmlWhitespace($expected),
@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
         );
     }
 
-    protected function sanitizeHtmlWhitespace(string $subject): string
+    protected function sanitizeHtmlWhitespace($subject)
     {
         $find = ['/>\s+</', '/(^\s+)|(\s+$)/'];
         $replace = ['><', ''];

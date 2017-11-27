@@ -7,7 +7,7 @@ use Spatie\Menu\Helpers\Str;
 
 class ActiveUrlChecker
 {
-    public static function check(string $url, string $requestUrl, string $rootUrl = '/'): bool
+    public static function check($url, $requestUrl, $rootUrl = '/')
     {
         $url = Url::fromString($url);
         $requestUrl = Url::fromString($requestUrl);

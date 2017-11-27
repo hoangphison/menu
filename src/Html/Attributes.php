@@ -45,7 +45,7 @@ class Attributes
      *
      * @return $this
      */
-    public function setAttribute(string $attribute, string $value = '')
+    public function setAttribute($attribute, $value = '')
     {
         if ($attribute === 'class') {
             $this->addClass($value);
@@ -89,12 +89,12 @@ class Attributes
         return $this;
     }
 
-    public function isEmpty(): bool
+    public function isEmpty()
     {
         return empty($this->attributes) && empty($this->classes);
     }
 
-    public function toArray(): array
+    public function toArray()
     {
         if (empty($this->classes)) {
             return $this->attributes;
@@ -103,7 +103,7 @@ class Attributes
         return array_merge($this->attributes, ['class' => implode(' ', $this->classes)]);
     }
 
-    public function toString(): string
+    public function toString()
     {
         if ($this->isEmpty()) {
             return '';
@@ -123,7 +123,7 @@ class Attributes
         return implode(' ', $attributeStrings);
     }
 
-    public function __toString() : string
+    public function __toString()
     {
         return $this->toString();
     }

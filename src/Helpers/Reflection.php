@@ -9,7 +9,7 @@ use ReflectionParameter;
 
 class Reflection
 {
-    public static function firstParameterType(callable $callable): string
+    public static function firstParameterType(callable $callable)
     {
         $reflection = is_object($callable)
             ? (new ReflectionObject($callable))->getMethod('__invoke')
@@ -21,10 +21,10 @@ class Reflection
             return $parameter->getClass() ? $parameter->getClass()->name : null;
         }, $parameters);
 
-        return $parameterTypes[0] ?? '';
+        return isset($parameterTypes[0]) ? $parameterTypes[0] : '';
     }
 
-    public static function itemMatchesType(Item $item, string $type): bool
+    public static function itemMatchesType(Item $item, $type)
     {
         if ($type === '') {
             return true;

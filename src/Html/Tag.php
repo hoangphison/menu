@@ -10,18 +10,18 @@ class Tag
     /** @var \Spatie\Menu\Html\Attributes */
     protected $attributes;
 
-    public function __construct(string $tagName, Attributes $attributes = null)
+    public function __construct($tagName, Attributes $attributes = null)
     {
         $this->tagName = $tagName;
         $this->attributes = $attributes ?: new Attributes();
     }
 
-    public static function make(string $tagName, Attributes $attributes = null)
+    public static function make($tagName, Attributes $attributes = null)
     {
         return new self($tagName, $attributes);
     }
 
-    public function withContents($contents): string
+    public function withContents($contents)
     {
         if (is_array($contents)) {
             $contents = implode('', $contents);
@@ -30,7 +30,7 @@ class Tag
         return $this->open().$contents.$this->close();
     }
 
-    public function open(): string
+    public function open()
     {
         if ($this->attributes->isEmpty()) {
             return "<{$this->tagName}>";
@@ -39,7 +39,7 @@ class Tag
         return "<{$this->tagName} {$this->attributes}>";
     }
 
-    public function close(): string
+    public function close()
     {
         return "</{$this->tagName}>";
     }

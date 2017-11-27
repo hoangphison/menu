@@ -37,7 +37,7 @@ class MenuBuildTest extends MenuTestCase
             '/contact' => 'Contact',
         ];
 
-        $this->menu = Menu::build($items, function (Menu $menu, string $text, string $url) {
+        $this->menu = Menu::build($items, function (Menu $menu, $text, $url) {
             return $menu->link($url, $text);
         });
 

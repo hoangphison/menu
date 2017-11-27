@@ -14,7 +14,7 @@ class FiltersTest extends MenuTestCase
     /** @test */
     public function it_can_apply_using_each()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('#', 'Beam')
             ->link('#', 'Me')
             ->each(function (Link $link) {
@@ -36,7 +36,7 @@ class FiltersTest extends MenuTestCase
     /** @test */
     public function it_can_apply_using_register_filter()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('#', 'Beam')
             ->link('#', 'Me')
             ->registerFilter(function (Link $link) {
@@ -58,7 +58,7 @@ class FiltersTest extends MenuTestCase
     /** @test */
     public function it_can_apply_using_apply_to_all()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->link('#', 'Beam')
             ->link('#', 'Me')
             ->applyToAll(function (Link $link) {
@@ -80,7 +80,7 @@ class FiltersTest extends MenuTestCase
     /** @test */
     public function it_can_register_a_closure_as_a_filter()
     {
-        $this->menu = Menu::new()->link('#', 'Foo')->applyToAll(function (Link $link) {
+        $this->menu = Menu::newMenu()->link('#', 'Foo')->applyToAll(function (Link $link) {
             $link->addClass('filtered');
         });
 
@@ -95,19 +95,27 @@ class FiltersTest extends MenuTestCase
     public function it_can_register_an_invokable_class_as_a_filter()
     {
         // Use an anonymous class -- should be identical to a concrete class
-        $invokable_class = new class {
+        /*$invokable_class = new class {
             public function __invoke(Link $link)
             {
                 $link->addClass('filtered');
             }
-        };
+        };*/
 
-        $this->menu = Menu::new()->link('#', 'Foo')->applyToAll($invokable_class);
+        $this->menu = Menu::newMenu()->link('#', 'Foo')->applyToAll(new AnonymousClass0);
 
         $this->assertRenders('
             <ul>
                 <li><a href="#" class="filtered">Foo</a></li>
             </ul>
         ');
+    }
+}
+
+class AnonymousClass0
+{
+    public function __invoke(Link $link)
+    {
+        $link->addClass('filtered');
     }
 }

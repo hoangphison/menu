@@ -11,7 +11,7 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_can_add_a_submenu_with_a_menu()
     {
-        $this->menu = Menu::new()->submenu(Menu::new());
+        $this->menu = Menu::newMenu()->submenu(Menu::newMenu());
 
         $this->assertRenders('<ul><li><ul></ul></li></ul>');
     }
@@ -19,7 +19,7 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_can_add_a_submenu_with_a_callable_menu()
     {
-        $this->menu = Menu::new()->submenu(function (Menu $menu): Menu {
+        $this->menu = Menu::newMenu()->submenu(function (Menu $menu) {
             return $menu;
         });
 
@@ -35,11 +35,11 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_preserves_filters_with_callable_menus()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->registerFilter(function (Activatable $item) {
                 $item->setUrl('/bar'.$item->url());
             })
-            ->submenu(function (Menu $menu): Menu {
+            ->submenu(function (Menu $menu) {
                 return $menu->link('/baz', 'Baz');
             });
 
@@ -57,7 +57,7 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_can_add_a_submenu_with_a_string_header()
     {
-        $this->menu = Menu::new()->submenu('Hi', Menu::new());
+        $this->menu = Menu::newMenu()->submenu('Hi', Menu::newMenu());
 
         $this->assertRenders('
             <ul>
@@ -69,7 +69,7 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_can_add_a_submenu_with_an_item_header()
     {
-        $this->menu = Menu::new()->submenu(Link::to('#', 'Hi'), Menu::new());
+        $this->menu = Menu::newMenu()->submenu(Link::to('#', 'Hi'), Menu::newMenu());
 
         $this->assertRenders('
             <ul>
@@ -84,7 +84,7 @@ class MenuSubmenuTest extends MenuTestCase
     /** @test */
     public function it_can_conditionally_add_a_submenu()
     {
-        $this->menu = Menu::new()->submenuIf(false, Menu::new());
+        $this->menu = Menu::newMenu()->submenuIf(false, Menu::newMenu());
 
         $this->assertRenders('<ul></ul>');
     }

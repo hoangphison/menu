@@ -9,12 +9,12 @@ interface Item
      *
      * @return bool
      */
-    public function isActive(): bool;
+    public function isActive();
 
     /**
      * Render the item in html.
      *
      * @return string
      */
-    public function render(): string;
+    public function render();
 }

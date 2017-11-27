@@ -10,7 +10,7 @@ interface HasParentAttributes
      *
      * @return array
      */
-    public function parentAttributes(): array;
+    public function parentAttributes();
 
     /**
      * @param string $attribute
@@ -18,7 +18,7 @@ interface HasParentAttributes
      *
      * @return $this
      */
-    public function setParentAttribute(string $attribute, string $value = '');
+    public function setParentAttribute($attribute, $value = '');
 
     /**
      * @param array $attributes
@@ -32,5 +32,5 @@ interface HasParentAttributes
      *
      * @return $this
      */
-    public function addParentClass(string $class);
+    public function addParentClass($class);
 }

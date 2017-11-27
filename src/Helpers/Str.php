@@ -4,7 +4,7 @@ namespace Spatie\Menu\Helpers;
 
 class Str
 {
-    public static function startsWith(string $haystack, string $needle): bool
+    public static function startsWith($haystack, $needle)
     {
         if ($needle != '' && substr($haystack, 0, strlen($needle)) === $needle) {
             return true;
@@ -13,7 +13,7 @@ class Str
         return false;
     }
 
-    public static function removeFromStart(string $remove, string $subject): string
+    public static function removeFromStart($remove, $subject)
     {
         if (! self::startsWith($subject, $remove)) {
             return $subject;
@@ -22,7 +22,7 @@ class Str
         return self::replaceFirst($remove, '', $subject);
     }
 
-    public static function replaceFirst(string $search, string $replace, string $subject): string
+    public static function replaceFirst($search, $replace, $subject)
     {
         $position = strpos($subject, $search);
 
@@ -33,7 +33,7 @@ class Str
         return $subject;
     }
 
-    public static function ensureLeft(string $pattern, string $subject): string
+    public static function ensureLeft($pattern, $subject)
     {
         if (strpos($subject, $pattern) === 0) {
             return $subject;
@@ -42,7 +42,7 @@ class Str
         return $pattern.$subject;
     }
 
-    public static function ensureRight(string $pattern, string $subject): string
+    public static function ensureRight($pattern, $subject)
     {
         if (strrpos($subject, $pattern) === strlen($subject) - 1) {
             return $subject;

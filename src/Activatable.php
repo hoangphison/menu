@@ -24,7 +24,7 @@ interface Activatable
     /**
      * @return bool
      */
-    public function hasUrl(): bool;
+    public function hasUrl();
 
     /**
      * @param string|null $url
@@ -37,5 +37,5 @@ interface Activatable
      * @param string $url
      * @param string $root
      */
-    public function determineActiveForUrl(string $url, string $root = '/');
+    public function determineActiveForUrl($url, $root = '/');
 }

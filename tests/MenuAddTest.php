@@ -10,7 +10,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_starts_as_an_empty_list()
     {
-        $this->menu = Menu::new();
+        $this->menu = Menu::newMenu();
 
         $this->assertRenders('<ul></ul>');
     }
@@ -18,7 +18,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function an_item_can_be_added()
     {
-        $this->menu = Menu::new()->add(Link::to('#', 'Hello'));
+        $this->menu = Menu::newMenu()->add(Link::to('#', 'Hello'));
 
         $this->assertRenders('
             <ul>
@@ -30,7 +30,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function a_link_can_be_added()
     {
-        $this->menu = Menu::new()->link('#', 'Hello');
+        $this->menu = Menu::newMenu()->link('#', 'Hello');
 
         $this->assertRenders('
             <ul>
@@ -42,7 +42,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function an_empty_item_can_be_added()
     {
-        $this->menu = Menu::new()->empty();
+        $this->menu = Menu::newMenu()->emptyItem();
 
         $this->assertRenders('
             <ul>
@@ -54,7 +54,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function multiple_items_can_be_added()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->add(Link::to('#', 'Hello'))
             ->add(Link::to('#', 'World'));
 
@@ -69,7 +69,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_adds_an_active_class_to_active_items()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->add(Link::to('#', 'Hello')->setActive());
 
         $this->assertRenders('
@@ -82,8 +82,8 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function submenus_can_be_added()
     {
-        $this->menu = Menu::new()
-            ->add(Menu::new()
+        $this->menu = Menu::newMenu()
+            ->add(Menu::newMenu()
                 ->add(Link::to('#', 'In Too Deep'))
             );
 
@@ -101,8 +101,8 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_adds_active_classes_to_active_submenus()
     {
-        $this->menu = Menu::new()
-            ->add(Menu::new()
+        $this->menu = Menu::newMenu()
+            ->add(Menu::newMenu()
                 ->add(Link::to('#', 'In Too Deep')->setActive())
             );
 
@@ -120,7 +120,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_can_conditionally_add_an_item()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->addIf(true, Link::to('#', 'Foo'))
             ->addIf(false, Link::to('#', 'Bar'))
             ->addIf(function () {
@@ -144,7 +144,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_can_conditionally_add_a_link()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->linkIf(true, '#', 'Foo')
             ->linkIf(false, '#', 'Bar')
             ->linkIf(function () {
@@ -168,7 +168,7 @@ class MenuAddTest extends MenuTestCase
     /** @test */
     public function it_can_conditionally_add_html()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->htmlIf(true, 'Foo')
             ->htmlIf(false, 'Bar')
             ->htmlIf(function () {

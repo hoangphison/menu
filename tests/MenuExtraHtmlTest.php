@@ -10,7 +10,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_can_prepend_content()
     {
-        $this->menu = Menu::new()->prepend('<h1>Hi!</h1>');
+        $this->menu = Menu::newMenu()->prepend('<h1>Hi!</h1>');
 
         $this->assertRenders('<h1>Hi!</h1><ul></ul>');
     }
@@ -38,9 +38,9 @@ class MenuExtraHtmlTest extends MenuTestCase
      * @param string $prepend
      * @param string $expected
      */
-    public function it_can_conditionally_prepend_content($condition, string $prepend, string $expected)
+    public function it_can_conditionally_prepend_content($condition, $prepend, $expected)
     {
-        $this->menu = Menu::new()->prependIf($condition, $prepend);
+        $this->menu = Menu::newMenu()->prependIf($condition, $prepend);
 
         $this->assertRenders($expected);
     }
@@ -48,7 +48,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_can_append_content()
     {
-        $this->menu = Menu::new()->append('<aside>Bye!</aside>');
+        $this->menu = Menu::newMenu()->append('<aside>Bye!</aside>');
 
         $this->assertRenders('<ul></ul><aside>Bye!</aside>');
     }
@@ -76,9 +76,9 @@ class MenuExtraHtmlTest extends MenuTestCase
      * @param string $prepend
      * @param string $expected
      */
-    public function it_can_conditionally_append_content($condition, string $prepend, string $expected)
+    public function it_can_conditionally_append_content($condition, $prepend, $expected)
     {
-        $this->menu = Menu::new()->appendIf($condition, $prepend);
+        $this->menu = Menu::newMenu()->appendIf($condition, $prepend);
 
         $this->assertRenders($expected);
     }
@@ -86,7 +86,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_renders_classes()
     {
-        $this->menu = Menu::new()->addClass('menu');
+        $this->menu = Menu::newMenu()->addClass('menu');
 
         $this->assertRenders('<ul class="menu"></ul>');
     }
@@ -94,7 +94,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_renders_attributes()
     {
-        $this->menu = Menu::new()->setAttribute('data-role', 'navigation');
+        $this->menu = Menu::newMenu()->setAttribute('data-role', 'navigation');
 
         $this->assertRenders('<ul data-role="navigation"></ul>');
     }
@@ -102,7 +102,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_renders_attributes_on_the_list_items()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->add(Link::to('/foo', 'Foo')->setParentAttribute('data-foo'));
 
         $this->assertRenders('
@@ -115,7 +115,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_renders_classes_on_the_list_items()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->add(Link::to('/foo', 'Foo')->addParentClass('red'));
 
         $this->assertRenders('
@@ -128,7 +128,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_renders_classes_on_the_list_items_when_they_are_active()
     {
-        $this->menu = Menu::new()
+        $this->menu = Menu::newMenu()
             ->add(Link::to('/foo', 'Foo')->setActive()->addParentClass('red'));
 
         $this->assertRenders('
@@ -141,7 +141,7 @@ class MenuExtraHtmlTest extends MenuTestCase
     /** @test */
     public function it_can_be_wrapped_in_an_element()
     {
-        $this->menu = Menu::new()->link('#', 'Foo')->wrap('div');
+        $this->menu = Menu::newMenu()->link('#', 'Foo')->wrap('div');
 
         $this->assertRenders('
             <div>

@@ -15,7 +15,7 @@ trait HasParentAttributes
      *
      * @return array
      */
-    public function parentAttributes(): array
+    public function parentAttributes()
     {
         return $this->parentAttributes->toArray();
     }
@@ -26,7 +26,7 @@ trait HasParentAttributes
      *
      * @return $this
      */
-    public function setParentAttribute(string $attribute, string $value = '')
+    public function setParentAttribute($attribute, $value = '')
     {
         $this->parentAttributes->setAttribute($attribute, $value);
 
@@ -50,7 +50,7 @@ trait HasParentAttributes
      *
      * @return $this
      */
-    public function addParentClass(string $class)
+    public function addParentClass($class)
     {
         $this->parentAttributes->addClass($class);
 

@@ -25,7 +25,7 @@ class Html implements Item, Activatable, HasParentAttributes
     /**
      * @param string $html
      */
-    protected function __construct(string $html)
+    protected function __construct($html)
     {
         $this->html = $html;
         $this->parentAttributes = new Attributes();
@@ -38,7 +38,7 @@ class Html implements Item, Activatable, HasParentAttributes
      *
      * @return static
      */
-    public static function raw(string $html)
+    public static function raw($html)
     {
         return new static($html);
     }
@@ -48,7 +48,7 @@ class Html implements Item, Activatable, HasParentAttributes
      *
      * @return static
      */
-    public static function empty()
+    public static function emptyItem()
     {
         return new static('');
     }
@@ -56,7 +56,7 @@ class Html implements Item, Activatable, HasParentAttributes
     /**
      * @return string
      */
-    public function html(): string
+    public function html()
     {
         return $this->html;
     }
@@ -64,7 +64,7 @@ class Html implements Item, Activatable, HasParentAttributes
     /**
      * @return string
      */
-    public function render(): string
+    public function render()
     {
         return $this->html;
     }

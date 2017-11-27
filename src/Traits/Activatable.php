@@ -15,7 +15,7 @@ trait Activatable
     /**
      * @return bool
      */
-    public function isActive(): bool
+    public function isActive()
     {
         return $this->active;
     }
@@ -59,7 +59,7 @@ trait Activatable
     /**
      * @return bool
      */
-    public function hasUrl(): bool
+    public function hasUrl()
     {
         return ! is_null($this->url);
     }
@@ -82,7 +82,7 @@ trait Activatable
      *
      * @return $this
      */
-    public function determineActiveForUrl(string $url, string $root = '/')
+    public function determineActiveForUrl($url, $root = '/')
     {
         if (! $this->hasUrl()) {
             return;

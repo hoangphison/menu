@@ -21,7 +21,7 @@ class HtmlTest extends TestCase
     {
         $this->assertEquals(
             '',
-            Html::empty()->html()
+            Html::emptyItem()->html()
         );
     }
 }
